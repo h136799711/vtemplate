@@ -3,6 +3,30 @@ import axios from 'axios'
 import { dbhTool,dbhCache } from '@peter_xiter/dbh-js-tools/index'
 import {getApiUrl, getVersion, getClientId} from "./config";
 
+const convertFormData = function (obj) {
+    let fd = new FormData();
+    for (let i in obj) {
+        if (i === 'lc_key' || i === 'lc_expire') continue;
+        if (obj.hasOwnProperty(i)) {
+            if (Array.isArray(obj[i])) {
+                for (let j = 0; j < obj[i].length; j++) {
+                    let value = obj[i][j];
+                    if (typeof value === 'number') {
+                        value = value.toFixed(2)
+                    }
+                    fd.append(i + '[' + j + ']', value)
+                }
+            } else {
+                let value = obj[i];
+                if (typeof value === 'number') {
+                    value = value.toFixed(2)
+                }
+                fd.append((i), value)
+            }
+        }
+    }
+    return fd
+};
 class HttpError extends Error {
     constructor(message) {
         super();
@@ -38,30 +62,6 @@ const defaultPost = function (servicePath, data, suc, fail) {
         }
     })
 };
-const convertFormData = function (obj) {
-    let fd = new FormData();
-    for (let i in obj) {
-        if (i === 'lc_key' || i === 'lc_expire') continue;
-        if (obj.hasOwnProperty(i)) {
-            if (Array.isArray(obj[i])) {
-                for (let j = 0; j < obj[i].length; j++) {
-                    let value = obj[i][j];
-                    if (typeof value === 'number') {
-                        value = value.toFixed(2)
-                    }
-                    fd.append(i + '[' + j + ']', value)
-                }
-            } else {
-                let value = obj[i];
-                if (typeof value === 'number') {
-                    value = value.toFixed(2)
-                }
-                fd.append((i), value)
-            }
-        }
-    }
-    return fd
-};
 
 const apiPost = function (url, data) {
     if (!data) data = {};
@@ -82,15 +82,18 @@ const apiPost = function (url, data) {
     // 默认缓存 5分钟
     let localCacheExpire = data.lc_expire || 300;
     let localCacheKey = data.lc_key || '';
+    let refreshCache = data.lc_refresh || false;
     if (localCacheKey) {
         shouldCache = true;
         let cacheValue = dbhCache.getBigDataValue(localCacheKey);
         if (cacheValue) {
-            let parsedValue = JSON.parse(cacheValue);
-            console.debug('cached ', data.lc_key);
-            return new Promise((resolve,reject) => {
-                resolve(parsedValue);
-            });
+            if (!refreshCache) {
+                let parsedValue = JSON.parse(cacheValue);
+                console.debug('cached ', data.lc_key);
+                return new Promise((resolve, reject) => {
+                    resolve(parsedValue);
+                });
+            }
         }
     }
 

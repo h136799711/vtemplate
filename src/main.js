@@ -38,6 +38,8 @@ import { dbhTool } from '@peter_xiter/dbh-js-tools/index'
 // i18n
 import zhCN from './i18n/zh-CN'
 import en from './i18n/en'
+// ECharts
+import ECharts from 'vue-echarts'
 
 VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(githubTheme);
@@ -103,7 +105,7 @@ app.use(i18n);
 app.use(router);
 app.use(store);
 app.use(VMdEditor);
-
+app.component("ECharts", ECharts);
 
 window.dbh = window.dbh || {};
 window.dbh.clientInfo = window.dbh.clientInfo || {};
