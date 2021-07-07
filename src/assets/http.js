@@ -104,9 +104,8 @@ const apiPost = function (url, data) {
     }).then((response) => {
         let data = response.data;
         if (data.code === 1111) {
-            window.dbh.alertWarn(dbh.vue_instance.$i18n.t('Please Login Again'));
             window.dbh.vue_instance.$router.push('/login');
-           throw new HttpError(data.msg);
+            throw new HttpError(data.msg);
         } else {
             if (0 === parseInt(data.code)) {
                 if (shouldCache) {
