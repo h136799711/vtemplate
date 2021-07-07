@@ -1,0 +1,63 @@
+{
+  "name": "vue3_admin",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode development",
+    "build": "vue-cli-service build --mode production",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@peter_xiter/dbh-js-tools": "^1.0.2",
+    "vue": "3.1.*",
+    "vuex": "4.0.*",
+    "vue-i18n": "9.1.*",
+    "vue-json-pretty": "2.0.2",
+    "vue-loader": "16.2.*",
+    "vue-router": "4.0.*",
+    "vue-style-loader": "4.1.*",
+    "axios": "0.21.*",
+    "codemirror": "latest",
+    "echarts": "5.1.*",
+    "element-plus": "1.0.2-beta.54",
+    "js-base64": "3.6.*",
+    "lockr": "0.8.5",
+    "lodash": "latest",
+    "qrcode.vue": "3.2.*",
+    "video.js": "7.13.*",
+    "videojs-brand": "0.0.4",
+    "videojs-contextmenu-ui": "5.2.*",
+    "videojs-playlist": "4.3.*",
+    "videojs-playlist-ui": "3.8.*",
+    "@kangc/v-md-editor": "2.3.*",
+    "nprogress": "0.2.*"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
