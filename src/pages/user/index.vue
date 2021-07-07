@@ -279,7 +279,7 @@
     <div class="text-center">
       <el-pagination
           :current-page="page_index"
-        :page-sizes="[3, 10, 20, 30, 50]"
+        :page-sizes="[10, 20, 30, 50]"
         :page-size="queryForm.page_size"
         layout="total, sizes, prev, pager, next, jumper"
         :total="count"
@@ -515,7 +515,7 @@ export default {
       queryForm: {
         mobile: '',
         page_index: 1,
-        page_size: 3
+        page_size: 10
       },
       addForm: { mobile: '', countryNo: '86', password: '', repassword: '' },
       editForm: { id: 0, nickname: '' },

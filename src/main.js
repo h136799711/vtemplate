@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { createI18n } from 'vue-i18n'
 import App from './App.vue'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 import store from './store/index'
 import routes from './routes'
 import './assets/fullscreen'
@@ -55,7 +53,6 @@ const router = createRouter({
 });
 // 刷新 JWT Token
 router.beforeEach((to, from) => {
-    NProgress.start();
     if (to.path === '/login') {
         return true
     }
@@ -79,7 +76,6 @@ router.beforeEach((to, from) => {
 });
 
 router.afterEach(transition => {
-    NProgress.done()
 });
 // ElementLocale.i18n
 // Create VueI18n instance with options

@@ -1,5 +1,5 @@
 {
-  "name": "vue3_admin",
+  "name": "vtemplate",
   "version": "0.1.1",
   "private": true,
   "scripts": {
@@ -24,13 +24,7 @@
     "lockr": "0.8.5",
     "lodash": "latest",
     "qrcode.vue": "3.2.*",
-    "video.js": "7.13.*",
-    "videojs-brand": "0.0.4",
-    "videojs-contextmenu-ui": "5.2.*",
-    "videojs-playlist": "4.3.*",
-    "videojs-playlist-ui": "3.8.*",
-    "@kangc/v-md-editor": "2.3.*",
-    "nprogress": "0.2.*"
+    "@kangc/v-md-editor": "2.3.*"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
